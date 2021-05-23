@@ -13,7 +13,9 @@ public class IteratorRemover
 
 	public IteratorRemover(String line, String rem)
 	{
-		this.setTest(line, rem);
+		String[] words = line.split(" ");
+    list = new ArrayList<String>(Arrays.asList(words));
+    toRemove = rem;
 	}
 
 	public void setTest(String line, String rem)
@@ -29,12 +31,9 @@ public class IteratorRemover
 	{
 		
            Iterator it = list.iterator();
-           String str = "";
+          
         
-           while(it.hasNext()) {
-                 
-                   str = (String)it.next();
-            
+           while(it.hasNext()) {       
                    if(str.equals(this.toRemove)) {
                            it.remove();
                    }
@@ -44,7 +43,6 @@ public class IteratorRemover
 	public String toString()
 	{
 		
-           String res = String.join(", ", list);
-           return "[" + res + "]";
+         return list.toString();
 	}
 }
